@@ -211,7 +211,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
             activeTabColor = ta.getColor(R.styleable.BottomBar_bb_activeTabColor, defaultActiveColor);
             badgeBackgroundColor = ta.getColor(R.styleable.BottomBar_bb_badgeBackgroundColor, Color.RED);
             badgeTextColor = ta.getColor(R.styleable.BottomBar_bb_badgeTextColor, Color.WHITE);
-            badgeTextSize = ta.getFloat(R.styleable.BottomBar_bb_badgeTextSize, 14);
+            badgeTextSize = ta.getDimensionPixelSize(R.styleable.BottomBar_bb_badgeTextSize, 5);
             hideBadgeWhenActive = ta.getBoolean(R.styleable.BottomBar_bb_badgesHideWhenActive, true);
             titleTextAppearance = ta.getResourceId(R.styleable.BottomBar_bb_titleTextAppearance, 0);
             titleTypeFace = getTypeFaceFromAsset(ta.getString(R.styleable.BottomBar_bb_titleTypeFace));
