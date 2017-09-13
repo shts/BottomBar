@@ -78,6 +78,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
     private int activeTabColor;
     private int badgeBackgroundColor;
     private int badgeTextColor;
+    private float badgeTextSize;
     private boolean hideBadgeWhenActive;
     private boolean longPressHintsEnabled;
     private int titleTextAppearance;
@@ -210,6 +211,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
             activeTabColor = ta.getColor(R.styleable.BottomBar_bb_activeTabColor, defaultActiveColor);
             badgeBackgroundColor = ta.getColor(R.styleable.BottomBar_bb_badgeBackgroundColor, Color.RED);
             badgeTextColor = ta.getColor(R.styleable.BottomBar_bb_badgeTextColor, Color.WHITE);
+            badgeTextSize = ta.getDimension(R.styleable.BottomBar_bb_badgeTextSize, 14);
             hideBadgeWhenActive = ta.getBoolean(R.styleable.BottomBar_bb_badgesHideWhenActive, true);
             titleTextAppearance = ta.getResourceId(R.styleable.BottomBar_bb_titleTextAppearance, 0);
             titleTypeFace = getTypeFaceFromAsset(ta.getString(R.styleable.BottomBar_bb_titleTypeFace));
@@ -321,6 +323,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
                 .barColorWhenSelected(defaultBackgroundColor)
                 .badgeBackgroundColor(badgeBackgroundColor)
                 .badgeTextColor(badgeTextColor)
+                .badgeTextSize(badgeTextSize)
                 .hideBadgeWhenSelected(hideBadgeWhenActive)
                 .titleTextAppearance(titleTextAppearance)
                 .titleTypeFace(titleTypeFace)
@@ -707,6 +710,17 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
             @Override
             public void update(BottomBarTab tab) {
                 tab.setBadgeTextColor(badgeTextColor);
+            }
+        });
+    }
+
+    public void setBadgeTextSize(float size) {
+        badgeTextSize = size;
+
+        batchPropertyApplier.applyToAllTabs(new BatchTabPropertyApplier.TabPropertyUpdater() {
+            @Override
+            public void update(BottomBarTab tab) {
+                tab.setBadgeTextSize(badgeTextSize);
             }
         });
     }
